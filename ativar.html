@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ativação de Produto</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen p-6">
+  <div class="bg-white p-8 rounded-2xl shadow-lg text-center max-w-lg w-full">
+    <h1 class="text-2xl font-bold text-green-600 mb-4">Acesso Liberado!</h1>
+    <p id="mensagem" class="text-gray-700 text-lg"></p>
+    <a id="btnAcessar" href="#" class="hidden mt-6 inline-block bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition">
+      Ir para IA de Receitas
+    </a>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const email = params.get("email");
+    const produto = params.get("produto");
+
+    const mensagem = document.getElementById("mensagem");
+    const btnAcessar = document.getElementById("btnAcessar");
+
+    if (email && produto === "ia-receitas") {
+      mensagem.innerHTML = `Olá, <strong>${email}</strong>! Seu acesso ao produto <strong>IA para Receitas</strong> foi ativado com sucesso.`;
+      btnAcessar.href = "https://vinfdfdf.github.io/IA-para-receitas/receitas.html"; // página protegida
+      btnAcessar.classList.remove("hidden");
+    } else {
+      mensagem.textContent = "Não foi possível ativar seu acesso. Verifique o link.";
+    }
+  </script>
+</body>
+</html>
